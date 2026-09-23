@@ -3,20 +3,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-public class UserService {
-
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-factory");
-    EntityManager em = emf.createEntityManager();
-
-    User createUser(String name){
-
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        User user = new User(name);
-        em.persist(user);
-        tx.commit();
-        em.close();
-        return user;
+public class UserService implements UserInterface{
+    private final UserRepo userRepo;
+    public UserService(UserRepo userRepo){
+        this.userRepo = userRepo;
     }
-
+    public User createUser(String name){
+        return userRepo.createUser(name);
+    }
 }

@@ -1,10 +1,10 @@
-CREATE DATABASE IF jpa_practice;
+CREATE DATABASE jpa_practice;
 
 \c jpa_practice
 
 CREATE TABLE users (
     id BIGSERIAL PRIMARY KEY,
-    username VARCHAR(100) NOT NULL
+    username VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE messages (
