@@ -1,8 +1,8 @@
 package junk;
 
 public class JunkMain {
-    static void main() {
-        MyClass mc = new MyClass();
-        mc.setS("hello");
+    public static void main(String[] args) {
+            MyClass mc = new MyClass();
+            mc.setS("hello");
     }
 }

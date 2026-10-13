@@ -1,0 +1,14 @@
+{
+    "name": "OpenSUSE Java Development",
+    "build": {
+        "dockerfile": "dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack"
+            ]
+        }
+    },
+    "remoteUser":"vscode"
+}

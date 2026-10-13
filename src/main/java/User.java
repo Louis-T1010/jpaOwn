@@ -1,3 +1,5 @@
+import javax.naming.directory.InvalidSearchControlsException;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,8 +16,17 @@ public class User {
         return id;
     }
 
-    User(String name){
-        this.name = name;
+    User(String username){
+        if (username.length() > 99){
+            throw new IllegalArgumentException("username character limit exceeded");
+        }
+        if (!username.matches("^[A-Za-z0-9._]+$")){
+            throw new IllegalArgumentException("username contains invalid characters");
+        }
+        if (username.isBlank && username.isEmpty){
+            throw new IllegalArgumentException("username is empty");
+        }
+        this.name = username;
     }
 
     public User(){
