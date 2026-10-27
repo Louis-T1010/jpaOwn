@@ -1,8 +1,9 @@
 {
     "name": "OpenSUSE Java Development",
-    "build": {
-        "dockerfile": "dockerfile"
-    },
+    "dockerComposeFile": "compose.yaml",
+    "service": "app",
+    "workspaceFolder": "/workspaces",
+    "shutdownAction": "stopCompose",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -10,5 +11,5 @@
             ]
         }
     },
-    "remoteUser":"vscode"
+    "remoteUser": "vscode"
 }

@@ -6,7 +6,6 @@ RUN zypper --non-interactive refresh && \
     maven \
     git \
     zsh \
-    gradle \
     postgresql \
     opi \
     sudo \
@@ -29,19 +28,20 @@ RUN useradd --create-home --shell /usr/bin/zsh vscode && \
     echo "vscode ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode && \
     chmod 0440 /etc/sudoers.d/vscode
 
-COPY zshrc /home/vscode/.zshrc
-COPY p10k.zsh /home/vscode/.p10k.zsh
-COPY .config /home/
+COPY .devcontainer/zshrc /home/vscode/.zshrc
+COPY .devcontainer/.p10k.zsh /home/vscode/.p10k.zsh
+COPY .devcontainer/.config /home/vscode/.config
 RUN chown vscode:vscode /home/vscode/.zshrc
 RUN chown vscode:vscode /home/vscode/.p10k.zsh
+RUN export PATH="/usr/lib/postgresql18/bin:$PATH"
 
-RUN mkdir /home/vscode/scripts \
-    sudo mkdir -p /home/vscode/.local/share/fonts \
-    git clone https://github.com/ryanoasis/powerline-extra-symbols.git /home/vscode/scripts/powerline-extra-symbols \
-    git clone https://github.com/FortAwesome/Font-Awesome.git /home/vscode/scripts/Font-Awesome \
-    sudo cp -r /home/vscode/scripts/powerline-extra-symbols /home/vscode/.local/share/fonts \
-    sudo cp -r /home/vscode/scripts/Font-Awesome /home/vscode/.local/share/fonts \
-    wget -P /home/vscode/scripts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Hack.zip \
+RUN mkdir /home/vscode/scripts; \
+    mkdir -p /home/vscode/.local/share/fonts; \
+    git clone https://github.com/ryanoasis/powerline-extra-symbols.git /home/vscode/scripts/powerline-extra-symbols; \
+    git clone https://github.com/FortAwesome/Font-Awesome.git /home/vscode/scripts/Font-Awesome; \
+    cp -r /home/vscode/scripts/powerline-extra-symbols /home/vscode/.local/share/fonts; \
+    cp -r /home/vscode/scripts/Font-Awesome /home/vscode/.local/share/fonts; \
+    wget -P /home/vscode/scripts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Hack.zip; \
     sudo unzip /home/vscode/scripts/Hack.zip -d /home/vscode/.local/share/fonts
 USER vscode
 

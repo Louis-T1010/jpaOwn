@@ -10,13 +10,16 @@ public class User {
     private Long id;
 
     @Column(name = "username")
-    String name;
+    private String name;
+
+    @Column(name = "password_hash")
+    private String passwordHash;
 
     public Long getId() {
         return id;
     }
 
-    User(String username){
+    public  User(String username, String passwordHash){
         if (username.length() > 99){
             throw new IllegalArgumentException("username character limit exceeded");
         }
@@ -27,6 +30,7 @@ public class User {
             throw new IllegalArgumentException("username is empty");
         }
         this.name = username;
+        this.passwordHash = passwordHash;
     }
 
     public User(){
