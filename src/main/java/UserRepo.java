@@ -7,8 +7,7 @@ public class UserRepo {
     public UserRepo(EntityManagerFactory emf){
         this.emf = emf;
     }
-    public User createUser(String name){
-        User user = new User(name);
+    public User createUser(User user){
         try(EntityManager em = emf.createEntityManager()){
             EntityTransaction tx = em.getTransaction();
             try {
@@ -26,6 +25,7 @@ public class UserRepo {
                 throw e;
             }
         }
+        System.out.println("user created");
         return user;
     }
 }

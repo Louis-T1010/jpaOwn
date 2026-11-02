@@ -8,7 +8,7 @@ public class UserService implements UserInterface{
     public UserService(UserRepo userRepo){
         this.userRepo = userRepo;
     }
-    public User createUser(String name){
-        return userRepo.createUser(name);
+    public User createUser(User user){
+        return userRepo.createUser(user);
     }
 }

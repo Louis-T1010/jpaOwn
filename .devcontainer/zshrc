@@ -143,7 +143,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export PATH=$PATH:/home/owner/.spicetify
 
-export JAVA_HOME=/usr/lib64/jvm/java-11-openjdk-11/
+export JAVA_HOME=/usr/lib64/jvm/java-21-openjdk
 
 export WAYBAR_THEME="kovasko-waybar"
 

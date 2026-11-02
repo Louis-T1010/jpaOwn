@@ -26,11 +26,19 @@ public class User {
         if (!username.matches("^[A-Za-z0-9._]+$")){
             throw new IllegalArgumentException("username contains invalid characters");
         }
-        if (username.isBlank && username.isEmpty){
+        if (username.isBlank() || username == null){
             throw new IllegalArgumentException("username is empty");
         }
         this.name = username;
         this.passwordHash = passwordHash;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getPasswordHash(){
+        return this.passwordHash;
     }
 
     public User(){

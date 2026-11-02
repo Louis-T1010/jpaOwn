@@ -1,3 +1,3 @@
 public interface UserInterface {
-    User createUser(String name);
+    User createUser(User user);
 }
